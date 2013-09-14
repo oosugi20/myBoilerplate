@@ -1,0 +1,11 @@
+// ==============================================================
+// Sprite用設定
+
+$sprite: sprite-map('sprite/*.png', $layout: smart);
+$sprite-image: sprite-url($sprite);
+
+@mixin sprite($map) {
+	@include sprite-box-size($map, $sprite, $device-pixel-ratio:1);
+	@include sprite-background($map, $sprite, $sprite-image, $device-pixel-ratio:1);
+	@include sprite-background-size($map, $sprite, $device-pixel-ratio:1);
+}

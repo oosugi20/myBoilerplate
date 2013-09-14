@@ -1,0 +1,66 @@
+/**
+ * Utillity Class
+ *
+ * !important設定により、どこでも使える微調整用のclass群。
+ * CSS設計時には使用せず、主に運用や修正フェーズで、
+ * 共通設定されたCSSを書き換えるより個別に設定したほうがよいと判断される場合に使用する。
+ *
+ * Prefix: ".util-"
+ */
+
+.util-fz-LLL { font-size:   2em !important; }
+.util-fz-LL  { font-size: 1.8em !important; }
+.util-fz-L   { font-size: 1.6em !important; }
+.util-fz-M   { font-size: 1.4em !important; }
+.util-fz-S   { font-size: 1.2em !important; }
+.util-fz-SS  { font-size:   1em !important; }
+.util-fz-SSS { font-size: 0.8em !important; }
+
+
+.util-al-right  { text-align: right  !important;}
+.util-al-center { text-align: center !important;}
+.util-al-left   { text-align: left   !important;}
+
+.util-va-top    { vertical-align: top    !important;}
+.util-va-middle { vertical-align: middle !important;}
+.util-va-bottom { vertical-align: bottom !important;}
+
+
+.util-fw-bold   { font-weight: bold   !important;}
+.util-fw-normal { font-weight: normal !important;}
+
+.util-fs-italic { font-style: italic !important;}
+.util-fs-normal { font-style: normal !important;}
+
+
+.util-fl-left  { float: left  !important;}
+.util-fl-right { float: right !important;}
+
+.util-fl-imgLeft  { float: left  !important; margin-right: 10px !important;}
+.util-fl-imgRight { float: right !important; margin-left:  10px !important;}
+
+.util-clear { clear: both !important;}
+.util-clearfix:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; font-size: 0; }
+
+.util-m-0 { margin: 0 !important; }
+.util-mt-0 { margin-top: 0 !important; }
+.util-mr-0 { margin-right: 0 !important; }
+.util-mb-0 { margin-bottom: 0 !important; }
+.util-ml-0 { margin-left: 0 !important; }
+
+.util-w-auto   { width: auto !important;}
+.util-w-100per { width: 100% !important;}
+
+
+.util-tbl-fixed { table-layout: fixed !important;}
+
+
+.util-whs-nowrap { white-space: nowrap !important;}
+.util-whs-normal { white-space: normal !important;}
+
+
+.util-bd-none  { border:        none !important;}
+.util-bdt-none { border-top:    none !important;}
+.util-bdl-none { border-left:   none !important;}
+.util-bdr-none { border-right:  none !important;}
+.util-bdb-none { border-bottom: none !important;}

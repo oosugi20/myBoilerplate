@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/*!
+ * 牧野工房 Reset CSS for HTML5
+ *
+ * Copyright (c) 2011 Skill Partners Inc. All Rights Reserved.
+ * 
+ * @version : 0
+ * @author  : http://www.makinokobo.com - kobo@makinokobo.com
+ * 
+ */
+
+
+/**
+ * Browser Style Reset
+ *
+ * ブラウザスタイルをリセットする。
+ * フォントサイズは body要素直下の div#documentを10pxにセットし、
+ * 移行の設定は相対でem指定する。
+ * これにより、IE6でもブラウザ機能の文字サイズ変更が可能。
+ */
+
+
+html, body {
+	background: #FFFFFF;
+	color: #000000;
+}
+
+body, div, span,
+h1, h2, h3, h4, h5, h6,
+dl, dt, dd, ul, ol, li, dfn,
+p, blockquote, pre, code, abbr, address, cite, del,
+strong, em, img, b, i, small,
+table, thead, tbody, tfoot, tr, th, td, caption,
+object, iframe, form, fieldset, legend, label {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 13px/1 "メイリオ", "Meiryo", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+* html body {font-size: small;}
+*:first-child+html body {font-size: small;}
+head~/* */body {font-size: small;}
+html:not(:target) body {font-size: 13px;}
+
+.base-page {font-size: 77%;} /* 10px */
+.base-page2 {font-size: 77%;} /* 10px */
+.base-popup {font-size: 77%;} /* 10px */
+
+
+img {
+	border: none;
+	vertical-align: bottom;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-weight: bold;
+}
+
+
+strong, dt, dfn {
+	font-style: normal;
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+	font-weight: normal;
+}
+
+address, caption, cite, code, th {
+	font-style: normal;
+	font-weight: normal;
+}
+
+sup { vertical-align: text-top;    font-size: 0.75em; line-height: 1; }
+sub { vertical-align: text-bottom; font-size: 0.75em; line-height: 1; }
+
+input,textarea,select {font-family: inherit; font-size: inherit; font-weight:inherit;}
+
+pre, code { font-family: monospace; }
+
+table {border-collapse: collapse; border-spacing: 0; font-size: inherit;}
+th,td {text-align: left; vertical-align: top;}
+caption {text-align: left;}
+
+ul, dl, ol {
+	text-indent: 0;
+}
+
+li {
+	list-style: none;
+	list-style-position: outside;
+}
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+audio, video {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="image"]    { vertical-align: bottom; }
+input[type="radio"]    {}
+input[type="checkbox"] {}
+
+input[type="text"]     {}
+input[type="password"] {}
+input[type="email"]    {}
+input[type="tel"]      {}
+input[type="number"]   {}
+
+select   {}
+textarea {}
