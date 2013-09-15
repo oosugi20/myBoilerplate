@@ -81,7 +81,7 @@ module.exports = (grunt) ->
           'copy:css_debug'
         ]
       js:
-        files: [ 'htdocs/_DEVELOP/js/**/*' ]
+        files: [ 'htdocs/_DEVELOP/js/**/mine/*' ]
         tasks: [
           'concat:js_head_nomin'
           'concat:js_main_nomin'
