@@ -83,13 +83,15 @@ module.exports = (grunt) ->
       js:
         files: [ 'htdocs/_DEVELOP/js/**/*' ]
         tasks: [
-          'concat'
+          'concat:js_head_nomin'
+          'concat:js_main_nomin'
           'copy:js_debug'
         ]
 
   grunt.registerTask 'build_debug', [
     'compass'
-    'concat'
+    'concat:js_head_nomin'
+    'concat:js_main_nomin'
     'copy:js_debug'
     'copy:css_debug'
   ]
