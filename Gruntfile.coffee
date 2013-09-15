@@ -35,7 +35,7 @@ module.exports = (grunt) ->
           'htdocs/_DEVELOP/js/head/mine/ua.js'
         ]
         dest: 'htdocs/_DEVELOP/js/head/all.js'
-      js_main_nonmin:
+      js_main_nomin:
         src: [
           'htdocs/_DEVELOP/js/main/libs/jquery-1.10.2.js'
           'htdocs/_DEVELOP/js/main/mine/setup.js'
