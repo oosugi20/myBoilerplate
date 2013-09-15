@@ -64,3 +64,21 @@
 .util-bdl-none { border-left:   none !important;}
 .util-bdr-none { border-right:  none !important;}
 .util-bdb-none { border-bottom: none !important;}
+
+
+
+/**
+ * util-hoverlight
+ * オーバー時にふわっと光る感じにする効果をつける。
+ * transitionを使っているので、modernizrで振り分け、
+ * サポートしている端末でのみ効果を当てる。
+ * 逆にサポートしていない端末では、JavaScriptで効果を当てる。
+ */
+.csstransitions .util-hoverlight {
+	@include transition(opacity 200ms ease-out);
+}
+
+	.csstransitions .util-hoverlight:hover {
+		opacity: 0.65;
+		filter: alpha(opacity=65);
+	}
