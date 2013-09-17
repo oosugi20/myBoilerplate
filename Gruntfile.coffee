@@ -72,6 +72,21 @@ module.exports = (grunt) ->
       css_release:
         files:
           'htdocs/resources/css/common.css': 'htdocs/_DEVELOP/css/common.min.css'
+      export:
+        files: [
+          {
+            expand: true
+            cwd: './'
+            src: [
+              '**/*'
+              '!node_modules/**/*'
+              '!node_modules'
+              '!.git*'
+              '!.sass-cache'
+            ]
+            dest: '../send/<%= pkg.name %>-v<%= pkg.version %>'
+          }
+        ]
 
     watch:
       sass:
