@@ -46,3 +46,13 @@
   -webkit-background-size: $background-size-width $background-size-height;
   background-size: $background-size-width $background-size-height;
 }
+
+
+// ==============================================================
+// Background with background-size for retina
+
+@mixin harfbg($img-src) {
+	background-image: url($img-src);
+	-webkit-background-size: round(image-width($img-src) / 2) auto;
+	background-size: round(image-width($img-src) / 2) auto;
+}
