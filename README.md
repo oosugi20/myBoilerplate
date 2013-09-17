@@ -1,5 +1,4 @@
-# My Project
-
+# {%= project_name %}
 
 
 # How to build

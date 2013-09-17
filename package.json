@@ -1,5 +1,5 @@
 {
-  "name": "myBoilerplate",
+  "name": "{%= project_name %}",
   "version": "0.0.0",
   "devDependencies": {
     "grunt": "~0.4.1",
