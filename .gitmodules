@@ -1,0 +1,6 @@
+[submodule "components/jquery"]
+	path = components/jquery
+	url = git@github.com:jquery/jquery.git
+[submodule "components/Modernizr"]
+	path = components/Modernizr
+	url = git@github.com:Modernizr/Modernizr.git
