@@ -5,11 +5,3 @@ _notes/
 */_notes/
 *.mno
 *.sass-cache
-
-# gruntで展開されるファイルは除く
-htdocs/resources/css/*.css
-htdocs/resources/js/*.js
-htdocs/_DEVELOP/css/*.css
-htdocs/_DEVELOP/js/**/all.js
-htdocs/_DEVELOP/js/**/all.min.js
-htdocs/_DEVELOP/js/**/mine/*.min.js
