@@ -1,0 +1,19 @@
+{
+  "name": "myBoilerplate",
+  "version": "0.0.0",
+  "description": "",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oosugi20/myBoilerplate.git"
+  },
+  "author": "Makoto OOSUGI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oosugi20/myBoilerplate/issues"
+  }
+}
