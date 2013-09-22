@@ -5,10 +5,26 @@ module.exports = (grunt) ->
   grunt.task.loadNpmTasks 'grunt-contrib-concat'
   grunt.task.loadNpmTasks 'grunt-contrib-uglify'
   grunt.task.loadNpmTasks 'grunt-contrib-copy'
+  grunt.task.loadNpmTasks 'grunt-contrib-compress'
+  grunt.task.loadNpmTasks 'grunt-contrib-clean'
+  grunt.task.loadNpmTasks 'grunt-contrib-ftpush'
   grunt.task.loadNpmTasks 'grunt-contrib-watch'
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
+
+    ignores: [
+      '**/*'
+      '!node_modules/**/*'
+      '!node_modules'
+      '!.git*'
+      '!.sass-cache'
+      '!.DS_Store'
+      '!Thumbs.db'
+      '!_notes'
+      '!*.mno'
+      '!.ftppass'
+    ]
 
     compass:
       dist:
@@ -73,21 +89,57 @@ module.exports = (grunt) ->
       css_release:
         files:
           'htdocs/resources/css/common.css': 'htdocs/_DEVELOP/css/common.min.css'
-      export:
-        files: [
-          {
-            expand: true
-            cwd: './'
-            src: [
-              '**/*'
-              '!node_modules/**/*'
-              '!node_modules'
-              '!.git*'
-              '!.sass-cache'
-            ]
-            dest: '../send/<%= pkg.name %>-v<%= pkg.version %>'
-          }
+      archive:
+        expand: true
+        cwd: './'
+        src: '<%= ignores %>'
+        dest: 'archive-pre/<%= pkg.name %>-v<%= pkg.version %>'
+      archive_htdocs:
+        expand: true
+        cwd: 'htdocs/'
+        src: '<%= ignores %>'
+        dest: 'archive-pre/<%= pkg.name %>-v<%= pkg.version %>_htdocs/'
+
+    compress:
+      archive:
+        options:
+          archive: 'archive/<%= pkg.name %>-v<%= pkg.version %>.zip'
+        expand: true
+        cwd: 'archive-pre/'
+        src: [
+          '<%= pkg.name %>-v<%= pkg.version %>/**/*'
+          '!.DS_Store'
         ]
+      archive_htdocs:
+        options:
+          archive: 'archive/<%= pkg.name %>-v<%= pkg.version %>_htdocs.zip'
+        expand: true
+        cwd: 'archive-pre/'
+        src: [
+          '<%= pkg.name %>-v<%= pkg.version %>_htdocs/**/*'
+          '!.DS_Store'
+        ]
+
+    clean:
+      archive:
+        src: [
+          'archive-pre/**/*'
+          '!.gitkeep'
+        ]
+
+    ftpush:
+      zip:
+        auth:
+          host: '{%= ftp_host %}'
+          port: 21
+          authKey: '{%= ftp_authkey %}'
+        src: 'archive/'
+        exclusions: [
+          '.DS_Store'
+          '.gitkeep'
+        ]
+        dest: '{%= ftp_dir %}{%= project_id %}/'
+        simple: true
 
     watch:
       sass:
@@ -103,6 +155,25 @@ module.exports = (grunt) ->
           'concat:js_main_nomin'
           'copy:js_debug'
         ]
+
+  grunt.registerTask 'archive', [
+    'copy:archive'
+    'compress:archive'
+    'clean:archive'
+  ]
+  grunt.registerTask 'archive:htdocs', [
+    'copy:archive_htdocs'
+    'compress:archive_htdocs'
+    'clean:archive'
+  ]
+
+  grunt.registerTask 'deploy:zip', [
+    'build_release'
+    'archive'
+    # if want htdocs only
+    #'archive:htdocs'
+    'ftpush:zip'
+  ]
 
   grunt.registerTask 'build_debug', [
     'compass'

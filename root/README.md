@@ -1,5 +1,25 @@
 # {%= project_name %}
 
+`grunt archive` : `Gruntfile.js` などの開発用ファイルも含めたアーカイブをzip形式で吐き出す。
+`grunt archive:htdocs` : `htdocs/` 内だけのアーカイブをzip形式で吐き出す。
+
+# FTP
+
+`.ftppass` というファイル名で以下の内容を記述したファイルを作成する。
+
+```
+{
+  "{AUTHKEY_NAME}": {
+    "username": "{USER_NAME}",
+    "password": "{PASSWORD}"
+  }
+}
+```
+
+`deploy:zip` : `Gruntfile.js` などの開発用ファイルも含めたアーカイブをzip形式でFTPアップする。
+`Gruntfile.js` の設定で、 `deploy:zip` 内に `archive:htdocs` も加えると、 `htdocs/` 内のみのzipもアップする。
+加えて、 `deploy:zip` 内の `archive` を消すと、開発用ファイルを含めたアーカイブは作られず、`htdocs/` 内のアーカイブのみ作られFTPアップされる。
+
 
 # How to build
 

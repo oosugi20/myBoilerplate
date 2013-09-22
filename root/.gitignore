@@ -5,6 +5,7 @@ _notes/
 */_notes/
 *.mno
 *.sass-cache
+.ftppass
 
 # gruntで展開されるファイルは除く
 htdocs/resources/css/*.css
