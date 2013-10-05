@@ -15,7 +15,7 @@ sass_path = "htdocs/_DEVELOP/sass"
 javascripts_dir = "resources/js"
 javascripts_path = "htdocs/resources/js"
 
-sprite_load_path = "htdocs/_DEVELOP"
+sprite_load_path = "htdocs/_DEVELOP/sprites"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
