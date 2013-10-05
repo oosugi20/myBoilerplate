@@ -9,6 +9,8 @@ module.exports = (grunt) ->
   grunt.task.loadNpmTasks 'grunt-contrib-clean'
   grunt.task.loadNpmTasks 'grunt-contrib-ftpush'
   grunt.task.loadNpmTasks 'grunt-contrib-watch'
+  grunt.task.loadNpmTasks 'grunt-growl'
+  grunt.task.loadNpmTasks 'grunt-shell'
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
@@ -25,6 +27,18 @@ module.exports = (grunt) ->
       '!*.mno'
       '!.ftppass'
     ]
+
+    growl:
+      ok:
+        title: 'Grunt OK'
+      css:
+        title: 'CSS compiled'
+      js:
+        title: 'JS compiled'
+      build:
+        title: 'Build completed'
+      deploy:
+        title: 'Deploy completed'
 
     compass:
       dist:
@@ -141,12 +155,21 @@ module.exports = (grunt) ->
         dest: '{%= ftp_dir %}{%= project_id %}/'
         simple: true
 
+    shell:
+      imageOptim:
+        command: 'find htdocs/resources/img -name "sprite-*.png" | imageOptim -a -q'
+      # TODO JPEGmini に渡すタスク。ディレクトリを渡さないと時間かかる。
+      reload:
+        command: 'osascript -e \'tell application "Google Chrome" to reload active tab of window 1\''
+
     watch:
       sass:
         files: [ 'htdocs/_DEVELOP/sass/**/*' ]
         tasks: [
           'compass'
           'copy:css_debug'
+          'shell:reload'
+          'growl:css'
         ]
       js:
         files: [ 'htdocs/_DEVELOP/js/**/mine/*' ]
@@ -154,6 +177,8 @@ module.exports = (grunt) ->
           'concat:js_head_nomin'
           'concat:js_main_nomin'
           'copy:js_debug'
+          'shell:reload'
+          'growl:js'
         ]
 
   grunt.registerTask 'archive', [
@@ -168,30 +193,34 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'deploy:zip', [
-    'build_release'
+    'build:release'
     'archive'
     # if want htdocs only
     #'archive:htdocs'
     'ftpush:zip'
+    'growl:deploy'
   ]
 
-  grunt.registerTask 'build_debug', [
+  grunt.registerTask 'build:debug', [
     'compass'
     'concat:js_head_nomin'
     'concat:js_main_nomin'
     'copy:js_debug'
     'copy:css_debug'
+    'growl:build'
   ]
 
-  grunt.registerTask 'build_release', [
+  grunt.registerTask 'build:release', [
     'compass'
     'cssmin'
     'uglify'
     'concat'
     'copy:js_release'
     'copy:css_release'
+    'shell:imageOptim'
+    'growl:build'
   ]
 
   grunt.registerTask 'default', [
-    'build_debug'
+    'build:release'
   ]
